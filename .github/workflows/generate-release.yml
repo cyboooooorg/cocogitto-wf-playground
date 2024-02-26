@@ -46,7 +46,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: update changelog"
+          commit-message: "chore(release): update changelog for ${{ steps.bump-release.outputs.version }}"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
@@ -64,7 +64,7 @@ jobs:
       - name: Upload github release
         uses: softprops/action-gh-release@v1
         with:
-          body: ${{ steps.generate-changelog.outputs.CHANGELOG }}
+          body: ${{ steps.generate-changelog.outputs.changelog }}
           tag_name: ${{ steps.bump-release.outputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
