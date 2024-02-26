@@ -53,7 +53,7 @@ jobs:
           branch: chore/update-changelog
           delete-branch: true
           title: "chore(release): update changelog for ${{ steps.bump-release.outputs.version }}"
-          body: ${{ steps.generate-changelog.outputs.CHANGELOG }}
+          body: ${{ steps.generate-changelog.outputs.changelog }}
           labels: |
             documentation
             automated pr
