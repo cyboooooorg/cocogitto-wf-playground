@@ -36,7 +36,10 @@ jobs:
 
       - name: Generate Changelog
         id: generate-changelog
-        run: echo "changelog=$(cog changelog --at ${{ steps.bump-release.outputs.version }} -t full_hash)" >> $GITHUB_OUTPUT
+        run: |
+          echo 'changelog<<EOF' >> $GITHUB_OUTPUT
+          cog changelog --at ${{ steps.bump-release.outputs.version }} -t full_hash >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
         id: create-pull-request
@@ -47,7 +50,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: update-changelog
+          branch: chore/update-changelog
           delete-branch: true
           title: "chore(release): update changelog for ${{ steps.bump-release.outputs.version }}"
           body: ${{ steps.generate-changelog.outputs.CHANGELOG }}
