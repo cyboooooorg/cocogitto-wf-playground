@@ -20,9 +20,9 @@ path = "CHANGELOG.md"
 template = "remote"
 remote = "github.com"
 repository = "cocogitto-wf-playground"
-owner = "Cyboooooorg"
+owner = "cyboooooorg"
 authors = [
-  { signature = "Cyborg", username = "Cyboooooorg" }
+  { signature = "Cyborg", username = "cyboooooorg" }
 ]
 
 [commit_types]
