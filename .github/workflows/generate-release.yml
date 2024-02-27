@@ -19,10 +19,10 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          git config user.email github-actions@github.com
-          git config user.name github-actions
-          git config --global user.email github-actions@github.com
-          git config --global user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config user.name github-actions[bot]
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
 
       - name: Get previous tag
         id: get-previous-tag
@@ -34,8 +34,8 @@ jobs:
         id: bump-release
         uses: cocogitto/cocogitto-action@v3.6
         with:
-          git-user-email: "github-actions@github.com"
-          git-user: "github-actions"
+          git-user-email: "41898282+github-actions[bot]@users.noreply.github.com"
+          git-user: "github-actions[bot]"
           check-latest-tag-only: true
           release: true
 
