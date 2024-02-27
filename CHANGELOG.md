@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.2.0](https://github.com/cyboooooorg/cocogitto-wf-playground/compare/0.1.0..0.2.0) - 2024-02-27
+#### Bug Fixes
+- :fire: add a test for ci cd - ([87169e7](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/87169e7a227af0df9ff33ee493c308b5f5d08e1c)) - [@cyboooooorg](https://github.com/cyboooooorg)
+#### Continuous Integration
+- :green_heart: remove unused outputs and sort checkout commands - ([5b5e2c6](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/5b5e2c6cd3f4cde26df9a77bae0aa44db37ca0d5)) - [@cyboooooorg](https://github.com/cyboooooorg)
+- :green_heart: skip failing jobs if no new version - ([8813103](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/88131039808cf67c83dd78056cff365ddec92919)) - [@cyboooooorg](https://github.com/cyboooooorg)
+- :green_heart: fix typos - ([f7f379e](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/f7f379e1cf8d7b1753fefc75d2c37b9b25fad600)) - [@cyboooooorg](https://github.com/cyboooooorg)
+#### Features
+- :test_tube: add a feat in order to test ci cd - ([a5a8b89](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/a5a8b89e34aa4b26d41dfc9de945acaa3bacda95)) - [@cyboooooorg](https://github.com/cyboooooorg)
+
+- - -
+
 ## [0.1.0](https://github.com/cyboooooorg/cocogitto-wf-playground/compare/29673c70f15c2aba050a1f335c8d158febc638a2..0.1.0) - 2024-02-26
 #### Continuous Integration
 - :green_heart: fix changelog output case - ([42b3288](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/42b3288cf8449bcfcc9e95fc8f5d2a98a3d7ba3a)) - [@cyboooooorg](https://github.com/cyboooooorg)
