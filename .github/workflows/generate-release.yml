@@ -11,27 +11,29 @@ jobs:
     if: |
       github.event.pull_request.merged == true &&
       ${{ !contains(github.event.pull_request.title, 'chore(release): update changelog') }}
-    name: SemVer release
+    name: Semantic Versionning (Tag & Release)
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - run: |
+      - name: Set Up Committer as GitHub Actions Bot
+        run: |
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git config user.name github-actions[bot]
           git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
           git config --global user.name github-actions[bot]
 
-      - name: Get previous tag
+      - name: Get Previous Tag
         id: get-previous-tag
         uses: WyriHaximus/github-action-get-previous-tag@v1.4
         with:
           fallback: 0.0.0
 
-      - name: Bump release
-        id: bump-release
+      - name: Bump Version
+        id: bump-version
         uses: cocogitto/cocogitto-action@v3.6
         with:
           git-user-email: "41898282+github-actions[bot]@users.noreply.github.com"
@@ -40,26 +42,26 @@ jobs:
           release: true
 
       - name: Generate Changelog
-        if: ${{ steps.bump-release.outputs.version != steps.get-previous-tag.outputs.tag }}
+        if: ${{ steps.bump-version.outputs.version != steps.get-previous-tag.outputs.tag }}
         id: generate-changelog
         run: |
           echo 'changelog<<EOF' >> $GITHUB_OUTPUT
-          cog changelog --at ${{ steps.bump-release.outputs.version }} -t full_hash >> $GITHUB_OUTPUT
+          cog changelog --at ${{ steps.bump-version.outputs.version }} -t full_hash >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
-        if: ${{ steps.bump-release.outputs.version != steps.get-previous-tag.outputs.tag }}
+        if: ${{ steps.bump-version.outputs.version != steps.get-previous-tag.outputs.tag }}
         id: create-pull-request
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore(release): update changelog for ${{ steps.bump-release.outputs.version }}"
-          committer: GitHub <noreply@github.com>
+          commit-message: "chore(release): update changelog for ${{ steps.bump-version.outputs.version }}"
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: chore/update-changelog
+          branch: release/changelog/${{ steps.bump-version.outputs.version }}
           delete-branch: true
-          title: "chore(release): update changelog for ${{ steps.bump-release.outputs.version }}"
+          title: "chore(release): update changelog for ${{ steps.bump-version.outputs.version }}"
           body: ${{ steps.generate-changelog.outputs.changelog }}
           labels: |
             documentation
@@ -68,16 +70,16 @@ jobs:
           reviewers: cyboooooorg
           draft: false
 
-      - name: Upload github release
-        if: ${{ steps.bump-release.outputs.version != steps.get-previous-tag.outputs.tag }}
+      - name: Generate Release From Latest Tag
+        if: ${{ steps.bump-version.outputs.version != steps.get-previous-tag.outputs.tag }}
         uses: softprops/action-gh-release@v1
         with:
           body: ${{ steps.generate-changelog.outputs.changelog }}
-          tag_name: ${{ steps.bump-release.outputs.version }}
+          tag_name: ${{ steps.bump-version.outputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Enable Pull Request Automerge
-        if: ${{ steps.bump-release.outputs.version != steps.get-previous-tag.outputs.tag }}
+        if: ${{ steps.bump-version.outputs.version != steps.get-previous-tag.outputs.tag }}
         run: gh pr merge --merge --auto -d "${{ steps.create-pull-request.outputs.pull-request-number }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
