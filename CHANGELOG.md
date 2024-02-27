@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.2.2](https://github.com/cyboooooorg/cocogitto-wf-playground/compare/0.2.1..0.2.2) - 2024-02-27
+#### Bug Fixes
+- :bug: omg a new test fix commit for pipeline - ([e8ea860](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/e8ea860d7c1e2f97d731883169b267b7e2a409e2)) - [@cyboooooorg](https://github.com/cyboooooorg)
+#### Continuous Integration
+- :green_heart: fix github-action bot identity crise - ([b2da556](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/b2da556fcf138cd9e7607b9211e0ac8f7908af0f)) - [@cyboooooorg](https://github.com/cyboooooorg)
+
+- - -
+
 ## [0.2.1](https://github.com/cyboooooorg/cocogitto-wf-playground/compare/0.2.0..0.2.1) - 2024-02-27
 #### Bug Fixes
 - :ambulance: add un hotfix test commit - ([e0497b5](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/e0497b5f57cfb13e0b58bcbcdf47f8eff54b467e)) - [@cyboooooorg](https://github.com/cyboooooorg)
