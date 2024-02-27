@@ -56,7 +56,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(release): update changelog for ${{ steps.bump-version.outputs.version }}"
-          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: release/changelog/${{ steps.bump-version.outputs.version }}
