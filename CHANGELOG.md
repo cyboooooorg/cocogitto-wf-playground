@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.2.1](https://github.com/cyboooooorg/cocogitto-wf-playground/compare/0.2.0..0.2.1) - 2024-02-27
+#### Bug Fixes
+- :ambulance: add un hotfix test commit - ([e0497b5](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/e0497b5f57cfb13e0b58bcbcdf47f8eff54b467e)) - [@cyboooooorg](https://github.com/cyboooooorg)
+
+- - -
+
 ## [0.2.0](https://github.com/cyboooooorg/cocogitto-wf-playground/compare/0.1.0..0.2.0) - 2024-02-27
 #### Bug Fixes
 - :fire: add a test for ci cd - ([87169e7](https://github.com/cyboooooorg/cocogitto-wf-playground/commit/87169e7a227af0df9ff33ee493c308b5f5d08e1c)) - [@cyboooooorg](https://github.com/cyboooooorg)
